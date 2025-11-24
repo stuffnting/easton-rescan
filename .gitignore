@@ -1,0 +1,8 @@
+# Don't include any of the images
+*.jpg
+*.jpeg
+
+node_modules/
+.vscode/
+
+package-lock.json

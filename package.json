@@ -1,0 +1,19 @@
+{
+  "name": "Easton Rescan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "eleventy.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "@11ty/eleventy-img": "^6.0.4",
+    "lightbox2": "^2.11.5",
+    "sass": "^1.94.2"
+  }
+}

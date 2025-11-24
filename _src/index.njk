@@ -1,0 +1,12 @@
+---
+title: Easton Cowfolk Rescan Project
+---
+
+<h1 class="index-page__title">Welcome to the Easton Cowfolk Rescan Project</h1>
+<h2 class="index-page__sub-title">Galleries</h2>
+
+<ul class="index-page__list">
+{%- for gallery in collections.gallery -%}
+  <li class="index-page__list-item"><a href="{{ gallery.url }}/index.html">{{ gallery.data.title }}</a></li>
+{%- endfor -%}
+</ul>

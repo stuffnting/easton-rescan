@@ -1,0 +1,19 @@
+---
+layout: template.njk
+---
+
+<div class="gallery">
+<h1 class="gallery__title">{{ title }}</h1>
+  <ul class="gallery__thumbnails">
+    {% for photo in photos %}
+      <li class="thumb">
+        <a href="./large/{{ photo }}.jpg" class="thumb__link" data-lightbox="antwerp-2004" data-title="{{ photo }}">
+          <img src="./thumbs/{{ photo }}_thumb.jpg" class="thumb__img" alt="{{ photo }} Thumbnail" loading="lazy">
+        </a>
+        <div class="thumb_title">{{ photo }}</div>
+      </li>
+    {% else %}
+      <li>This would display if the 'item' collection were empty</li>
+    {% endfor %}
+  </ul>
+</div>
