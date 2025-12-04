@@ -14,6 +14,24 @@ export default function (eleventyConfig) {
   eleventyConfig.addGlobalData('thisYear', () => new Date().getFullYear());
 
   /**
+   * Collections
+   */
+  eleventyConfig.addCollection('orderedGalleries', function (collectionsApi) {
+    const galleries = collectionsApi.getFilteredByTag('gallery');
+
+    const orderMap = galleries[0].data.galleryOrder;
+
+    galleries.sort((itemA, itemB) => {
+      const orderA = orderMap[itemA.fileSlug];
+      const orderB = orderMap[itemB.fileSlug];
+
+      return orderA - orderB;
+    });
+
+    return galleries;
+  });
+
+  /**
    * Layout alias
    */
   eleventyConfig.addLayoutAlias('gallery', 'thumb-gallery.njk');

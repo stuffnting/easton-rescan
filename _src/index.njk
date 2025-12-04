@@ -6,7 +6,7 @@ title: Easton Cowfolk Rescan Project
 <h2 class="index-page__sub-title">Galleries</h2>
 
 <ul class="index-page__list">
-{%- for gallery in collections.gallery -%}
+{%- for gallery in collections.orderedGalleries -%}
   <li class="index-page__list-item"><a href="{{ gallery.url }}/index.html">{{ gallery.data.title }}</a></li>
 {%- endfor -%}
 </ul>
