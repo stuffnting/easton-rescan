@@ -91,7 +91,8 @@ img {
 
   &__thumbnails {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    /*    grid-template-columns: repeat(2, 1fr); */
+    grid-template-columns: repeat(auto-fill, minmax($default-thumb-size, 1fr));
     gap: $gallery-grid-gap;
     list-style: none;
     margin: 0;

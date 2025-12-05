@@ -1,6 +1,7 @@
 import path from 'node:path';
 import * as sass from 'sass';
 import { HtmlBasePlugin } from '@11ty/eleventy';
+import galleryOrder from './_src/_data/galleryOrder.json' with { type: 'json' };
 
 const lightboxPath = './node_modules/lightbox2/dist/';
 const lightboxImgPath = lightboxPath + 'images';
@@ -19,16 +20,18 @@ export default function (eleventyConfig) {
   eleventyConfig.addCollection('orderedGalleries', function (collectionsApi) {
     const galleries = collectionsApi.getFilteredByTag('gallery');
 
-    const orderMap = galleries[0].data.galleryOrder;
+    const orderedGalleries = galleries.sort((a, b) => {
+      const indexA = galleryOrder.indexOf(a.data.slug || a.fileSlug);
+      const indexB = galleryOrder.indexOf(b.data.slug || b.fileSlug);
 
-    galleries.sort((itemA, itemB) => {
-      const orderA = orderMap[itemA.fileSlug];
-      const orderB = orderMap[itemB.fileSlug];
+      // Handle items not in the list (optional, places them at the end)
+      if (indexA === -1) return 1;
+      if (indexB === -1) return -1;
 
-      return orderA - orderB;
+      return indexA - indexB;
     });
 
-    return galleries;
+    return orderedGalleries;
   });
 
   /**
