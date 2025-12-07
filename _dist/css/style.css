@@ -91,20 +91,23 @@ img {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 50px;
 }
 .thumb__link {
-  display: flex;
-  align-content: center;
-  justify-content: center;
   width: 100%;
-  aspect-ratio: 1.5;
   margin-bottom: 0.5em;
 }
 .thumb__img {
-  max-height: 290px;
-  max-width: 100%;
+  margin: 0 auto;
   box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.2);
+}
+.thumb--portrait .thumb__img {
+  width: 66.6667%;
+  height: auto;
+}
+.thumb--landscape .thumb__img {
+  width: 100%;
+  height: auto;
 }
 
 .footer {
@@ -112,4 +115,5 @@ img {
   bottom: 0;
   display: flex;
   gap: 25px;
+  margin-bottom: 50px;
 }

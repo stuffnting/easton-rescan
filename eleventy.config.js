@@ -1,6 +1,7 @@
 import path from 'node:path';
 import * as sass from 'sass';
 import { HtmlBasePlugin } from '@11ty/eleventy';
+import { imageSizeFromFile } from 'image-size/fromFile'
 import galleryOrder from './_src/_data/galleryOrder.json' with { type: 'json' };
 
 const lightboxPath = './node_modules/lightbox2/dist/';
@@ -32,6 +33,23 @@ export default function (eleventyConfig) {
     });
 
     return orderedGalleries;
+  });
+
+  /**
+   * Shortcodes
+   */
+  eleventyConfig.addAsyncShortcode("thumbHTML", async function(photo, fileSlug) {
+    const imageURL = path.resolve(`_src`, fileSlug, `thumbs`, `${photo}_thumb.jpg`);
+    const {width, height} = await imageSizeFromFile(imageURL);
+
+    const extraClass = width > height ? 'thumb--landscape' : 'thumb--portrait';
+
+    return `<li class="thumb ${extraClass}">
+              <a href="./large/${photo}.jpg" class="thumb__link" data-lightbox="antwerp-2004" data-title="${photo}">
+                <img src="./thumbs/${photo}_thumb.jpg" class="thumb__img" alt="${photo} Thumbnail" loading="lazy">
+              </a>
+              <div class="thumb_title">${photo}</div>
+            </li>`;
   });
 
   /**
