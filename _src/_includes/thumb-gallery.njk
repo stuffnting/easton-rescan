@@ -4,11 +4,11 @@ layout: template.njk
 
 <div class="gallery">
 <h1 class="gallery__title">{{ title }}</h1>
-  <ul class="gallery__thumbnails">
+  <div class="gallery__thumbnails">
     {% for photo in photos %}
       {%- thumbHTML photo, page.fileSlug  -%}
     {% else %}
       <li>No photographs in this gallery.</li>
     {% endfor %}
-  </ul>
+  </div>
 </div>

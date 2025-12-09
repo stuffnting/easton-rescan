@@ -44,12 +44,12 @@ export default function (eleventyConfig) {
 
     const extraClass = width > height ? 'thumb--landscape' : 'thumb--portrait';
 
-    return `<li class="thumb ${extraClass}">
+    return `<div class="thumb ${extraClass}">
               <a href="./large/${photo}.jpg" class="thumb__link" data-lightbox="antwerp-2004" data-title="${photo}">
                 <img src="./thumbs/${photo}_thumb.jpg" class="thumb__img" alt="${photo} Thumbnail" loading="lazy">
               </a>
-              <div class="thumb_title">${photo}</div>
-            </li>`;
+              <div class="thumb__title">${photo}</div>
+            </div>`;
   });
 
   /**

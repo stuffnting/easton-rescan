@@ -2,7 +2,7 @@
 .page-content, .top-menu {
   max-width: 1300px;
   margin: 0 auto;
-  padding: 0 25px;
+  padding: 0 4vw;
 }
 
 html * {
@@ -11,7 +11,8 @@ html * {
 
 body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: clamp(0.7rem, 1.8vw, 1.1rem);
+  /* font-size: clamp(0.7rem, 1.8vw, 1.1rem); */
+  font-size: 1.2rem;
   color: teal;
   margin: 0;
 }
@@ -27,7 +28,9 @@ img {
 }
 
 .top-menu {
+  font-size: clamp(1rem, 1.5vw, 2rem);
   margin-top: 25px;
+  margin-bottom: 1em;
 }
 .top-menu__link, .top-menu__link:visited {
   background-color: teal;
@@ -66,54 +69,78 @@ img {
 }
 
 .gallery__title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  text-align: center;
   font-weight: 200;
   margin-bottom: 2em;
-  padding-bottom: 0.2em;
+  padding-bottom: 0.4em;
   border-bottom: 2px solid teal;
 }
 .gallery__thumbnails {
   display: grid;
-  /*    grid-template-columns: repeat(2, 1fr); */
-  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-  gap: 25px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2vw;
 }
-@media only screen and (min-width: 970px) {
+@media only screen and (min-width: 450px) {
   .gallery__thumbnails {
-    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (min-width: 750px) {
+  .gallery__thumbnails {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media only screen and (min-width: 1000px) {
+  .gallery__thumbnails {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
 .thumb {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   align-items: center;
+  justify-content: flex-end;
   margin-bottom: 50px;
+  container-type: inline-size;
 }
 .thumb__link {
+  display: block;
   width: 100%;
-  margin-bottom: 0.5em;
+  max-width: 400px;
+  margin: 0 auto;
 }
 .thumb__img {
-  margin: 0 auto;
   box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.2);
+  height: auto;
+  margin: 0 auto;
 }
 .thumb--portrait .thumb__img {
-  width: 66.6667%;
-  height: auto;
+  width: 66.667%;
 }
 .thumb--landscape .thumb__img {
   width: 100%;
-  height: auto;
+}
+.thumb__title {
+  font-size: 7cqw;
+  text-align: center;
+  word-break: break-all;
+  margin-top: 0.5em;
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  gap: 25px;
   margin-bottom: 50px;
+}
+.footer__spacer {
+  display: none;
+}
+@media only screen and (min-width: 450px) {
+  .footer {
+    display: flex;
+    gap: 25px;
+  }
+  .footer__spacer {
+    display: block;
+  }
 }

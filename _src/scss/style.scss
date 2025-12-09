@@ -3,14 +3,14 @@ permalink: css/style.css
 ---
 
 $primary: teal;
-$gallery-grid-gap: 25px;
+$gallery-grid-gap: 2vw;
 $default-thumb-size: 290px;
 $max-content-width: 1300px;
 
 %content-width {
   max-width: $max-content-width;
   margin: 0 auto;
-  padding: 0 $gallery-grid-gap;
+  padding: 0 $gallery-grid-gap * 2;
 }
 
 html * {
@@ -21,7 +21,8 @@ body {
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans',
     'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     'Noto Color Emoji';
-  font-size: clamp(0.7rem, 1.8vw, 1.1rem);
+  /* font-size: clamp(0.7rem, 1.8vw, 1.1rem); */
+  font-size: 1.2rem;
   color: $primary;
   margin: 0;
 }
@@ -38,7 +39,9 @@ img {
 
 .top-menu {
   @extend %content-width;
+  font-size: clamp(1rem, 1.5vw, 2rem);
   margin-top: 25px;
+  margin-bottom: 1em;
 
   &__link,
   &__link:visited {
@@ -83,23 +86,29 @@ img {
 
 .gallery {
   &__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    text-align: center;
     font-weight: 200;
     margin-bottom: 2em;
-    padding-bottom: 0.2em;
+    padding-bottom: 0.4em;
     border-bottom: 2px solid $primary;
   }
 
   &__thumbnails {
     display: grid;
-    /*    grid-template-columns: repeat(2, 1fr); */
-    grid-template-columns: repeat(auto-fill, minmax($default-thumb-size, 1fr));
+    grid-template-columns: repeat(1, 1fr);
     gap: $gallery-grid-gap;
-    list-style: none;
-    margin: 0;
-    padding: 0;
 
-    @media only screen and (min-width: 970px) {
-      grid-template-columns: repeat(auto-fill, minmax($default-thumb-size, 1fr));
+    @media only screen and (min-width: 450px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media only screen and (min-width: 750px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media only screen and (min-width: 1000px) {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 }
@@ -107,35 +116,53 @@ img {
 .thumb {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   align-items: center;
+  justify-content: flex-end;
   margin-bottom: 50px;
+  container-type: inline-size;
 
   &__link {
+    display: block;
     width: 100%;
-    margin-bottom: 0.5em;
+    max-width: 400px;
+    margin: 0 auto;
   }
 
   &__img {
-    margin: 0 auto;
     box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.2);
+    height: auto;
+    margin: 0 auto;
   }
 
   &--portrait &__img {
-    width: 66.6667%;
-    height: auto;
+    width: 66.667%;
   }
 
   &--landscape &__img {
     width: 100%;
-    height: auto;
+  }
+
+  &__title {
+    font-size: 7cqw;
+    text-align: center;
+    word-break: break-all;
+    margin-top: 0.5em;
   }
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  gap: 25px;
   margin-bottom: 50px;
+
+  &__spacer {
+    display: none;
+  }
+
+  @media only screen and (min-width: 450px) {
+    display: flex;
+    gap: 25px;
+
+    &__spacer {
+      display: block;
+    }
+  }
 }
