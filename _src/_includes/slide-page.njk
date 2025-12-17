@@ -1,0 +1,43 @@
+---
+layout: template.njk
+permalink: "{{ page.filePathStem }}/{{ photo }}.html"
+pagination: 
+  data: photos 
+  size: 1 
+  alias: photo 
+eleventyComputed: 
+  previous: "{{ pagination.page.previous or pagination.page.last }}"
+  next: "{{ pagination.page.next or pagination.page.first }}"
+---
+
+<div class="slide">
+  <h1 class="slide__title">
+    <a href="../index.html#{{ photo }}" class="slide__title-link">{{ title }}</a>
+  </h1>
+  <h2 class="slide__subtitle">Slide {{ pagination.pageNumber + 1 }} / {{ pagination.pages.length }} : {{ photo }}</h2>
+  {% include "partials/social-media-warning.njk" %}
+  <img src="../large/{{ photo }}.jpg" alt="{{ photo }}" class="slide__img {% landPortClass photo, page.filePathStem %}">
+</div>
+<nav class="slide-nav">
+  <ul class="slide-nav__list">
+    <li class="slide-nav__item slide-nav__item--previous">
+      <a href="{{ previous }}.html" class="slide-nav__link">
+        <div class="slide-nav__text">Previous Slide</div>
+        <div class="slide-nav__img-wrap {% landPortClass previous, page.filePathStem %}">
+          <img src="../thumbs/{{ previous }}_thumb.jpg" alt="Previous thumb" class="slide-nav__img">
+        </div>
+      </a>
+    </li>
+    <li class="slide-nav__item  slide-nav__item--gallery">
+      <a href="../index.html#{{ photo }}" class="slide-nav__link">Gallery</a>
+    </li>
+    <li class="slide-nav__item slide-nav__item--next">
+      <a href="{{ next }}.html" class="slide-nav__link">
+        <div class="slide-nav__text">Next Slide</div>
+        <div class="slide-nav__img-wrap {% landPortClass next, page.filePathStem %}">
+          <img src="../thumbs/{{ next }}_thumb.jpg" alt="Next thumb" class="slide-nav__img">
+        </div>
+      </a>
+    </li>
+  </ul>
+</nav>

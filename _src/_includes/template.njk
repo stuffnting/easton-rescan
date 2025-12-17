@@ -7,12 +7,22 @@
     <link rel="stylesheet" href="{{ '/css/lightbox.css' }}" />
     <link rel="stylesheet" href="{{ '/css/style.css' }}" />
   </head>
-  <body>
-    {% if page.url !== '/' %}
-      <nav class="top-menu">
-        <span class="top-menu__item"><a href="{{ '/' }}index.html" class="top-menu__link">Gallery Menu</a></span>
-      </nav>
-    {% endif %}
+  <body class="{{ 'home' if './_dist/index.html' in page.outputPath }}">
+
+    <div class="menu-bar">
+      {% if page.url !== '/' %}
+        <nav class="top-menu">
+          <span class="top-menu__item"><a href="{{ '/' }}index.html" class="top-menu__link">Gallery Menu</a></span>
+        </nav>
+      {% endif %}
+      <div class="theme-switch">
+      <div id="theme-toggle-text" class="theme-switch__text"></div>
+        <label class="theme-switch__toggle">
+          <input id="theme-toggle" class="theme-switch__check" type="checkbox">
+          <span class="theme-switch__slider"></span>
+        </label>
+    </div>
+    </div>
     <div class="page-content">
       <main class="main-content">{{content | safe}}</main>
       <footer class="footer">
@@ -31,8 +41,13 @@
             document.write('<a href="mailto:' + email + '">Contact me</a>');
           </script>
         </div>
+        <div class="footer__spacer">|</div>
+        <div class="footer__privacy"><a href="{{ 'privacy.njk' | inputPathToUrl }}">Privacy</a></div>
       </footer>
     </div>
+    {% if page.url !== '/' %}
     <script src="../js/lightbox.js"></script>
+    {% endif %}
+    <script src="{{'./js/footer-scripts.njk' | inputPathToUrl }}"></script>
   </body>
 </html>

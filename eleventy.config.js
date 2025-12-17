@@ -38,24 +38,25 @@ export default function (eleventyConfig) {
   /**
    * Shortcodes
    */
-  eleventyConfig.addAsyncShortcode("thumbHTML", async function(photo, fileSlug) {
-    const imageURL = path.resolve(`_src`, fileSlug, `thumbs`, `${photo}_thumb.jpg`);
+  // A shortcode is used here because data is supplied by the image-size package
+  eleventyConfig.addAsyncShortcode("landPortClass", async function(photo, filePathStem) {
+
+    const gallery = path.basename(path.dirname(filePathStem));
+
+    // Thumb and large image have same aspect ratio, so no need to specify. Here large is used.
+    const imageURL = path.resolve(`_src`, gallery, `large`, `${photo}.jpg`);
+    
     const {width, height} = await imageSizeFromFile(imageURL);
+    const extraClass = width > height ? 'landscape' : 'portrait';
 
-    const extraClass = width > height ? 'thumb--landscape' : 'thumb--portrait';
-
-    return `<div class="thumb ${extraClass}">
-              <a href="./large/${photo}.jpg" class="thumb__link" data-lightbox="antwerp-2004" data-title="${photo}">
-                <img src="./thumbs/${photo}_thumb.jpg" class="thumb__img" alt="${photo} Thumbnail" loading="lazy">
-              </a>
-              <div class="thumb__title">${photo}</div>
-            </div>`;
+    return extraClass;
   });
 
   /**
    * Layout alias
    */
   eleventyConfig.addLayoutAlias('gallery', 'thumb-gallery.njk');
+  eleventyConfig.addLayoutAlias('slides', 'slide-page.njk');
 
   /**
    * Copy

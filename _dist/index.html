@@ -7,14 +7,30 @@
     <link rel="stylesheet" href="/easton-rescan/css/lightbox.css">
     <link rel="stylesheet" href="/easton-rescan/css/style.css">
   </head>
-  <body>
-    
+  <body class="home">
+
+    <div class="menu-bar">
+      
+      <div class="theme-switch">
+      <div id="theme-toggle-text" class="theme-switch__text"></div>
+        <label class="theme-switch__toggle">
+          <input id="theme-toggle" class="theme-switch__check" type="checkbox">
+          <span class="theme-switch__slider"></span>
+        </label>
+    </div>
+    </div>
     <div class="page-content">
       <main class="main-content">
 <h1 class="index-page__title">Welcome to the Easton Cowfolk Rescan Project</h1>
 <h2 class="index-page__sub-title">Galleries</h2>
 
-<ul class="index-page__list"><li class="index-page__list-item"><a href="/easton-rescan/thorncombe-2001/index.html">Thorncombe 2001</a></li><li class="index-page__list-item"><a href="/easton-rescan/antirazzisti-mondiali-2003/index.html">Antirazzisti Mondiali 2003</a></li><li class="index-page__list-item"><a href="/easton-rescan/antwerp-2004/index.html">Antwerp 2004</a></li></ul>
+<ul class="index-page__list"><li class="index-page__list-item">
+    <a href="/easton-rescan/thorncombe-2001/index.html" class="index-page__list-item-link">Thorncombe 2001</a>
+  </li><li class="index-page__list-item">
+    <a href="/easton-rescan/antirazzisti-mondiali-2003/index.html" class="index-page__list-item-link">Antirazzisti Mondiali 2003</a>
+  </li><li class="index-page__list-item">
+    <a href="/easton-rescan/antwerp-2004/index.html" class="index-page__list-item-link">Antwerp 2004</a>
+  </li></ul>
 </main>
       <footer class="footer">
         <div class="footer__copyright">Copyright &copy; R S Grove 2025</div>
@@ -32,8 +48,11 @@
             document.write('<a href="mailto:' + email + '">Contact me</a>');
           </script>
         </div>
+        <div class="footer__spacer">|</div>
+        <div class="footer__privacy"><a href="/easton-rescan/privacy.html">Privacy</a></div>
       </footer>
     </div>
-    <script src="../js/lightbox.js"></script>
+    
+    <script src="/easton-rescan/js/footer-scripts.js"></script>
   </body>
 </html>

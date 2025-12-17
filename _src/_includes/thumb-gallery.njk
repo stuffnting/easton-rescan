@@ -4,11 +4,19 @@ layout: template.njk
 
 <div class="gallery">
 <h1 class="gallery__title">{{ title }}</h1>
+  {% include "partials/social-media-warning.njk" %}
   <div class="gallery__thumbnails">
     {% for photo in photos %}
-      {%- thumbHTML photo, page.fileSlug  -%}
+      <div id="{{photo}}" class="thumb {% landPortClass photo, page.filePathStem %}">
+        <a href="./large/{{photo}}.jpg" class="thumb__link" data-lightbox="antwerp-2004" data-title="{{photo}}">
+          <img src="./thumbs/{{photo}}_thumb.jpg" class="thumb__img" alt="{{photo}} Thumbnail" loading="lazy" title="Open in Lightbox">
+        </a>
+        <div class="thumb__title">
+          <a href="./slides/{{photo}}.html" class="thumb__title-link">{{photo}}<br>View Single Slide</a>
+        </div>
+      </div>
     {% else %}
-      <li>No photographs in this gallery.</li>
+      <p>No photographs in this gallery.</p>
     {% endfor %}
   </div>
 </div>
