@@ -1,14 +1,36 @@
 ---
-title: Easton Cowfolk Rescan Project
+title: Easton CowFolk Rescan Project
 ---
 
-<h1 class="index-page__title">Welcome to the Easton Cowfolk Rescan Project</h1>
-<h2 class="index-page__sub-title">Galleries</h2>
+<h1 class="index-page__title">Welcome to the Easton CowFolk Rescan Project</h1>
 
+<div class="index-page__intro">
+  <p>I am in the process of rescanning photos that I took between 1999 and 2006; starting with the black and white ones, because they are quicker and easier to do. The aim is to make a much broader edit available for people to see.</p>
+  <p>More photos will be added as I complete scanning events. If you want to be notified of updated, please {% emailLink 'email me' %}.</p>
+  <p>Enjoy!</p>
+  <p>Rich</p>
+</div>
+
+<h2 class="index-page__sub-title">Galleries</h2>
 <ul class="index-page__list">
-{%- for gallery in collections.orderedGalleries -%}
-  <li class="index-page__list-item">
-    <a href="{{ gallery.url }}/index.html" class="index-page__list-item-link">{{ gallery.data.title }}</a>
-  </li>
-{%- endfor -%}
+  {% for gallery in collections.orderedGalleries %}
+    <li class="index-page__list-item">
+      <a href="{{ gallery.url }}/index.html" class="index-page__list-item-link">
+        {{ gallery.data.title }}—{{ gallery.data.added }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+
+<h2 class="index-page__sub-title">Still to scan</h2>
+<ul>
+  <li>Chiapas, Mexico, 1999—Colour.</li>
+  <li>Antwerp, 1999—Colour.</li>
+  <li>L.A. Cricket Tour, 2000—B/W.</li>
+  <li>Chiapas, Mexico, 2001—B/W. Currently being scanned.</li>
+  <li>The Homies & Popz CC In The UK, 2001—B/W + Colour.</li>
+  <li>Antirazzisti Mondiali, 2002—Colour.</li>
+  <li>The Easton CowFolk At Home, 2004—B/W.</li>
+  <li>Packers Field Fun Day 2005—Colour.</li>
+  <li>Packers Field Fun Day 2006—Colour.</li>
 </ul>

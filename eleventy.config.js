@@ -52,6 +52,10 @@ export default function (eleventyConfig) {
     return extraClass;
   });
 
+  eleventyConfig.addAsyncShortcode("emailLink", async function(linkText) {
+    return `<span class="email" data-link-text="${linkText}"></span>`;
+  });
+
   /**
    * Layout alias
    */

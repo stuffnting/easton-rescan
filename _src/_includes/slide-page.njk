@@ -11,11 +11,13 @@ eleventyComputed:
 ---
 
 <div class="slide">
-  <h1 class="slide__title">
-    <a href="../index.html#{{ photo }}" class="slide__title-link">{{ title }}</a>
-  </h1>
-  <h2 class="slide__subtitle">Slide {{ pagination.pageNumber + 1 }} / {{ pagination.pages.length }} : {{ photo }}</h2>
-  {% include "partials/social-media-warning.njk" %}
+  <header class="slide__header">
+    <h1 class="slide__title">
+      <a href="../index.html#{{ photo }}" class="slide__title-link">{{ title }}</a>
+    </h1>
+    <h2 class="slide__subtitle">Slide {{ pagination.pageNumber + 1 }} / {{ pagination.pages.length }} : {{ photo }}</h2>
+    {% include "partials/social-media-warning.njk" %}
+  </header>
   <img src="../large/{{ photo }}.jpg" alt="{{ photo }}" class="slide__img {% landPortClass photo, page.filePathStem %}">
 </div>
 <nav class="slide-nav">

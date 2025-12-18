@@ -1,4 +1,3 @@
-
 /**
  * Lights on/off button
  */

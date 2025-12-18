@@ -29,24 +29,14 @@
         <div class="footer__copyright">Copyright &copy; R S Grove {{ thisYear }}</div>
         <div class="footer__spacer">|</div>
         <div class="footer__email">
-          <script type="text/javascript">
-            function mix(str) {
-              return str.replace(/[a-zA-Z]/g, function (c) {
-                return String.fromCharCode(
-                  (c <= 'Z' ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26
-                );
-              });
-            }
-            let email = mix('evpuneq@fghssagvat.pbz');
-            document.write('<a href="mailto:' + email + '">Contact me</a>');
-          </script>
+          {% emailLink 'Contact me' %}
         </div>
         <div class="footer__spacer">|</div>
         <div class="footer__privacy"><a href="{{ 'privacy.njk' | inputPathToUrl }}">Privacy</a></div>
       </footer>
     </div>
     {% if page.url !== '/' %}
-    <script src="../js/lightbox.js"></script>
+      <script src="{{'./js/lightbox.njk' | inputPathToUrl }}"></script>
     {% endif %}
     <script src="{{'./js/footer-scripts.njk' | inputPathToUrl }}"></script>
   </body>

@@ -3,16 +3,34 @@ layout: template.njk
 ---
 
 <div class="gallery">
-<h1 class="gallery__title">{{ title }}</h1>
-  {% include "partials/social-media-warning.njk" %}
+  <header class="gallery__header">
+    <h1 class="gallery__title">{{ title }}</h1>
+    {% include "partials/social-media-warning.njk" %}
+    <details class="gallery__details">
+      <summary  class="gallery__summary">Instructions</summary>
+      <ul class="gallery__instructions">
+        <li>Click on the thumbnail to see the single photo.</li>
+        <li>Or, click the link below the thumbnail to see the photo in the lightbox.</li>
+        <li>If using the lightbox, click through the pictures using the arrow keys, or arrow links.</li>
+        <li>Use the lights on/off button (top-right) to choose a black or white page colour.</li>
+        <li>Look at the photos on a decent sized screen, rather than your phone.</li>
+        <li>Share links with people who might want to see the photo, but please don't put the photos themselves on social media. 
+          <a href="{{ 'privacy.njk' | inputPathToUrl }}">See the privacy page.</a>
+        </li>
+      </ul>
+    </details>
+  </header>
+
   <div class="gallery__thumbnails">
     {% for photo in photos %}
       <div id="{{photo}}" class="thumb {% landPortClass photo, page.filePathStem %}">
-        <a href="./large/{{photo}}.jpg" class="thumb__link" data-lightbox="antwerp-2004" data-title="{{photo}}">
-          <img src="./thumbs/{{photo}}_thumb.jpg" class="thumb__img" alt="{{photo}} Thumbnail" loading="lazy" title="Open in Lightbox">
+        <a href="./slides/{{photo}}.html" class="thumb__link">
+          <img src="./thumbs/{{photo}}_thumb.jpg" class="thumb__img" alt="{{photo}} Thumbnail" loading="lazy">
         </a>
         <div class="thumb__title">
-          <a href="./slides/{{photo}}.html" class="thumb__title-link">{{photo}}<br>View Single Slide</a>
+          <a href="./large/{{photo}}.jpg" class="thumb__title-link" data-lightbox="antwerp-2004" data-title="{{photo}}">
+            {{photo}}<br>Open Lightbox.
+          </a>          
         </div>
       </div>
     {% else %}
