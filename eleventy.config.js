@@ -1,7 +1,7 @@
 import path from 'node:path';
 import * as sass from 'sass';
 import { HtmlBasePlugin } from '@11ty/eleventy';
-import { imageSizeFromFile } from 'image-size/fromFile'
+import { imageSizeFromFile } from 'image-size/fromFile';
 import galleryOrder from './_src/_data/galleryOrder.json' with { type: 'json' };
 
 const lightboxPath = './node_modules/lightbox2/dist/';
@@ -11,6 +11,7 @@ export default function (eleventyConfig) {
   /**
    * Global data
    */
+  eleventyConfig.addGlobalData('photoDir', 'photos');
   eleventyConfig.addGlobalData('layout', 'template.njk');
   eleventyConfig.addGlobalData('lightboxPath', lightboxPath);
   eleventyConfig.addGlobalData('thisYear', () => new Date().getFullYear());
@@ -39,20 +40,23 @@ export default function (eleventyConfig) {
    * Shortcodes
    */
   // A shortcode is used here because data is supplied by the image-size package
-  eleventyConfig.addAsyncShortcode("landPortClass", async function(photo, filePathStem) {
-
-    const gallery = path.basename(path.dirname(filePathStem));
+  eleventyConfig.addAsyncShortcode('landPortClass', async function (photo, filePathStem) {
+    // Since 11ty 3 this.ctx contains data for page, including eleventyComputed values
+    const largeDir = this.ctx.largeDir;
 
     // Thumb and large image have same aspect ratio, so no need to specify. Here large is used.
-    const imageURL = path.resolve(`_src`, gallery, `large`, `${photo}.jpg`);
-    
-    const {width, height} = await imageSizeFromFile(imageURL);
+    const imageURL = path.resolve(path.join('_src', largeDir, photo + '.jpg'));
+
+    //console.log(path.resolve(path.join('_src', largeDir, photo + '.jpg')));
+
+    const { width, height } = await imageSizeFromFile(imageURL);
     const extraClass = width > height ? 'landscape' : 'portrait';
 
     return extraClass;
+    //return '';
   });
 
-  eleventyConfig.addAsyncShortcode("emailLink", async function(linkText) {
+  eleventyConfig.addAsyncShortcode('emailLink', async function (linkText) {
     return `<span class="email" data-link-text="${linkText}"></span>`;
   });
 

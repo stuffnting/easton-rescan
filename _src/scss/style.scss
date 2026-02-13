@@ -51,8 +51,19 @@ html * {
 }
 
 body {
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans',
-    'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    'Noto Sans',
+    'Liberation Sans',
+    Arial,
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
     'Noto Color Emoji';
   /* font-size: clamp(0.7rem, 1.8vw, 1.1rem); */
   font-size: 1.2rem;
@@ -350,6 +361,10 @@ ul {
 
   .theme--dark &__img {
     border: 1px solid #101010;
+  }
+
+  &__img-wrap {
+    padding-top: 3vh;
   }
 
   &__img {

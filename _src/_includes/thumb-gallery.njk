@@ -1,5 +1,8 @@
 ---
 layout: template.njk
+eleventyComputed:
+  thumbDir: "/{{photoDir}}/{{page.fileSlug}}/thumbs/"
+  largeDir: "/{{photoDir}}/{{page.fileSlug}}/large/"
 ---
 
 <div class="gallery">
@@ -25,12 +28,12 @@ layout: template.njk
     {% for photo in photos %}
       <div id="{{photo}}" class="thumb {% landPortClass photo, page.filePathStem %}">
         <a href="./slides/{{photo}}.html" class="thumb__link">
-          <img src="./thumbs/{{photo}}_thumb.jpg" class="thumb__img" alt="{{photo}} Thumbnail" loading="lazy">
+          <img src="{{ (thumbDir + photo) + '_thumb.jpg'}}" class="thumb__img" alt="{{photo}} Thumbnail" loading="lazy">
         </a>
-        <div class="thumb__title">
-          <a href="./large/{{photo}}.jpg" class="thumb__title-link" data-lightbox="antwerp-2004" data-title="{{photo}}">
+        <div class="thumb__title">        
+          <a href="{{ (largeDir + photo + '.jpg') }}" class="thumb__title-link" data-lightbox="{{page.fileSlug}}" data-title="{{photo}}">
             {{photo}}<br>Open Lightbox.
-          </a>          
+          </a>
         </div>
       </div>
     {% else %}

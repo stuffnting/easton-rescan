@@ -258,6 +258,9 @@ ul {
 .theme--dark .slide__img {
   border: 1px solid #101010;
 }
+.slide__img-wrap {
+  padding-top: 3vh;
+}
 .slide__img {
   border: 1px solid #efefef;
   margin: 0 auto;
