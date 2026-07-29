@@ -18,10 +18,33 @@ eleventyComputed:
       <a href="../index.html#{{ photo }}" class="slide__title-link">{{ title }}</a>
     </h1>
     <h2 class="slide__subtitle">Slide {{ pagination.pageNumber + 1 }} / {{ pagination.pages.length }} : {{ photo }}</h2>
+
+      
+      <nav class="gallery__nav">
+          <div class="gallery__nav-item">
+            <a href="../index.html" class="gallery__nav-link">
+              <span class="gallery__nav-arrow gallery__nav-arrow--prev"></span> Gallery View
+            </a>
+          </div>
+      </nav>
     {% include "partials/social-media-warning.njk" %}
   </header>
-  <div id="slide-image" class="slide__img-wrap">
-    <img src="{{ largeDir + photo + '.jpg' }}" alt="{{ photo }}" class="slide__img {% landPortClass photo, page.filePathStem %}">
+    <div id="slide-image" class="slide-image">
+      <div class="slide-image__img-wrap">
+        <img src="{{ largeDir + photo + '.jpg' }}" alt="{{ photo }}" class="slide-image__img {% landPortClass photo, page.filePathStem %}">
+        <div class="slide-image__nav"> 
+          <a href="{{ previous }}.html#slide-image" class="slide-image__nav-item slide-image__nav-item--prev">
+            {% if previousSlide != "#" %}
+              <span class="slide-image__nav-arrow slide-image__nav-arrow--prev"></span>
+            {% endif %}
+          </a>
+          <a href="{{ next }}.html#slide-image" class="slide-image__nav-item slide-image__nav-item--next">
+            {% if nextSlide != "#" %}
+              <span class="slide-image__nav-arrow slide-image__nav-arrow--next"></span>
+            {% endif %}
+          </a> 
+        </div>
+      </div>
   </div>
 </div>
 <nav class="slide-nav">

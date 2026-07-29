@@ -5,6 +5,8 @@ permalink: css/style.css
 @use 'sass:color';
 
 $primary: teal;
+$primary-darker: color.scale($primary, $lightness: -30%);
+$text-light: #efefef;
 $gallery-grid-gap: 2vw;
 $default-thumb-size: 290px;
 $max-content-width: 1300px;
@@ -28,6 +30,19 @@ $block-text-width: 650px;
 %button-link-hover {
   /* background: darken($primary, 10%); */
   background-color: color.adjust($primary, $lightness: -10%);
+}
+
+%nav-buttons {
+  display: block;
+  color: $text-light !important;
+  font-size: clamp(0.75rem, 2.5vw, 1rem);
+  background-color: $primary;
+  padding: 0.5em 1.5em;
+  border-radius: 50px;
+
+  &:hover {
+    background-color: $primary-darker;
+  }
 }
 
 %gallery-slide-title {
@@ -261,6 +276,34 @@ ul {
     margin-top: 25px;
   }
 
+  &__nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 0;
+  }
+
+  &__nav-link {
+    @extend %nav-buttons;
+  }
+
+  &__nav-arrow {
+    border: solid $text-light;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: clamp(3px, 1vw, 5px);
+
+    &--prev {
+      transform: rotate(135deg);
+      -webkit-transform: rotate(135deg);
+    }
+
+    &--next {
+      transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+    }
+  }
+
   &__summary {
     cursor: pointer;
 
@@ -362,13 +405,61 @@ ul {
   .theme--dark &__img {
     border: 1px solid #101010;
   }
+}
+
+.slide-image {
+  padding-top: 3vh;
+  display: flex;
+  justify-content: center;
 
   &__img-wrap {
-    padding-top: 3vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__nav {
+    width: calc(100% + 200px);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+  }
+
+  &__nav-item {
+    display: none;
+    width: 50%;
+    display: flex;
+    align-items: center;
+
+    &--prev {
+      justify-content: flex-start;
+    }
+
+    &--next {
+      justify-content: flex-end;
+    }
+  }
+
+  &__nav-arrow {
+    border: solid $primary;
+    border-width: 0 7px 7px 0;
+    display: inline-block;
+    padding: 10px;
+
+    &--prev {
+      transform: rotate(135deg);
+      -webkit-transform: rotate(135deg);
+    }
+
+    &--next {
+      transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+    }
   }
 
   &__img {
-    border: 1px solid #efefef;
+    border: 1px solid $text-light;
     margin: 0 auto;
 
     &.landscape {

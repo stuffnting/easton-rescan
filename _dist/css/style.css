@@ -18,6 +18,18 @@
   background-color: #004d4d;
 }
 
+.gallery__nav-link {
+  display: block;
+  color: #efefef !important;
+  font-size: clamp(0.75rem, 2.5vw, 1rem);
+  background-color: teal;
+  padding: 0.5em 1.5em;
+  border-radius: 50px;
+}
+.gallery__nav-link:hover {
+  background-color: rgb(0%, 35.137254902%, 35.137254902%);
+}
+
 .slide__title, .gallery__title {
   font-size: clamp(2rem, 5vw, 3rem);
   text-align: center;
@@ -190,6 +202,26 @@ ul {
   max-width: 650px;
   margin-top: 25px;
 }
+.gallery__nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 0;
+}
+.gallery__nav-arrow {
+  border: solid #efefef;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: clamp(3px, 1vw, 5px);
+}
+.gallery__nav-arrow--prev {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+.gallery__nav-arrow--next {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
 .gallery__summary {
   cursor: pointer;
 }
@@ -258,19 +290,60 @@ ul {
 .theme--dark .slide__img {
   border: 1px solid #101010;
 }
-.slide__img-wrap {
+
+.slide-image {
   padding-top: 3vh;
+  display: flex;
+  justify-content: center;
 }
-.slide__img {
+.slide-image__img-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.slide-image__nav {
+  width: calc(100% + 200px);
+  height: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+}
+.slide-image__nav-item {
+  display: none;
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+.slide-image__nav-item--prev {
+  justify-content: flex-start;
+}
+.slide-image__nav-item--next {
+  justify-content: flex-end;
+}
+.slide-image__nav-arrow {
+  border: solid teal;
+  border-width: 0 7px 7px 0;
+  display: inline-block;
+  padding: 10px;
+}
+.slide-image__nav-arrow--prev {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+.slide-image__nav-arrow--next {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+.slide-image__img {
   border: 1px solid #efefef;
   margin: 0 auto;
 }
-.slide__img.landscape {
+.slide-image__img.landscape {
   width: 100%;
   max-width: 800px;
   height: auto;
 }
-.slide__img.portrait {
+.slide-image__img.portrait {
   max-height: 90vh;
   width: auto;
 }
